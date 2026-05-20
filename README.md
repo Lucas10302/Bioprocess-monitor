@@ -29,3 +29,27 @@ Le projet est entièrement conteneurisé. Pour lancer la salle de contrôle virt
    ```bash
    git clone [https://github.com/VOTRE_NOM/bioprocess-monitor.git](https://github.com/VOTRE_NOM/bioprocess-monitor.git)
    cd bioprocess-monitor
+
+## 🏭 Transition vers un Bioréacteur Réel (Production)
+
+Cette architecture a été conçue pour passer d'un environnement de simulation à une véritable unité de production physique (ex: Sartorius, Applikon, Eppendorf) avec un minimum de modifications :
+
+1. **Raccordement Réseau :** Remplacer l'URL du simulateur local par l'adresse IP de l'automate (PLC) de la vraie cuve dans `opcua_connector.py` :
+   ```python
+   # Simulation : 
+   # OPC_URL = "opc.tcp://localhost:4840/freeopcua/server/"
+   
+   # Production : 
+   OPC_URL = "opc.tcp://192.168.10.50:4840" # Mettre l'IP physique de la machine
+
+2. **Cartographie des Capteurs (Node IDs) :** Modifier le dictionnaire d'adresses pour correspondre à la table d'échange OPC-UA fournie par le constructeur de votre bioréacteur :
+   # Simulation :
+   # NODE_PH = "ns=2;s=pH_Sensor"
+
+   # Production (Exemple pour une cuve industrielle) :
+   NODE_PH = "ns=4;i=10258"
+   NODE_DO = "ns=4;i=10259"
+   
+3. **Sécurisation des Accès :** Les équipements industriels exigeant souvent une sécurité stricte, il suffit d'activer l'authentification par certificat numérique ou par couple identifiant/mot de passe au moment de l'initialisation du client dans opcua_connector.py :
+   client.set_user("operateur_usine")
+   client.set_password("MotDePasseSecurise123!")
