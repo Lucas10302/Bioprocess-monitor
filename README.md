@@ -43,10 +43,10 @@ Cette architecture a été conçue pour passer d'un environnement de simulation 
    OPC_URL = "opc.tcp://192.168.10.50:4840" # Mettre l'IP physique de la machine
 
 2. **Cartographie des Capteurs (Node IDs) :** Modifier le dictionnaire d'adresses pour correspondre à la table d'échange OPC-UA fournie par le constructeur de votre bioréacteur :
-   # Simulation :
-   # NODE_PH = "ns=2;s=pH_Sensor"
+   Simulation :
+   NODE_PH = "ns=2;s=pH_Sensor"
 
-   # Production (Exemple pour une cuve industrielle) :
+   Production (Exemple pour une cuve industrielle) :
    NODE_PH = "ns=4;i=10258"
    NODE_DO = "ns=4;i=10259"
    
