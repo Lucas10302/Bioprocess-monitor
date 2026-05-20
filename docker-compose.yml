@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # 1. La Base de Données TEMP_REEL : TimescaleDB
+  db:
+    image: timescale/timescaledb:latest-pg15
+    container_name: bioprocess_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Lucky10%!"
+      POSTGRES_DB: bioprocess_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Ton Application Streamlit
+  app:
+    build: .
+    container_name: bioprocess_app
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      # L'adresse magique : on remplace 127.0.0.1 par "db" (le conteneur du dessus)
+      # Le %% est nécessaire dans Docker pour ne pas casser le mot de passe !
+      - DB_URL=postgresql+psycopg2://postgres:Lucky10%%!@db:5432/bioprocess_db
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

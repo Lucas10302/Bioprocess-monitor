@@ -1,0 +1,12 @@
+# Ignorer les mots de passe et l'environnement local
+.env
+
+# Ignorer les fichiers temporaires de Python
+__pycache__/
+*.pyc
+
+# Ignorer la base de données locale Docker
+postgres_data/
+
+# Ignorer les rapports PDF générés
+*.pdf

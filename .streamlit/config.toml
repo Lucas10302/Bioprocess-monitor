@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#00E5FF"          # Bleu néon pour les boutons et éléments actifs
+backgroundColor = "#0E1117"       # Fond sombre profond
+secondaryBackgroundColor = "#1F2633" # Fond des blocs et barres latérales (anthracite)
+textColor = "#E2E8F0"             # Texte clair et reposant pour les yeux
+font = "sans serif"
