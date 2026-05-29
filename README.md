@@ -36,5 +36,3 @@ This architecture was designed to transition from a simulation environment to a 
 NODE_DO = "ns=4;i=10259"
 3. Access Security: Enable username/password authentication when initializing the client: client.set_user("plant_operator")
 client.set_password("SecurePassword123!")
-4. Colle ce texte dans ton nouveau fichier.
-5. **Appuie sur `Ctrl + S` pour sauvegarder.** C'est crucial.
