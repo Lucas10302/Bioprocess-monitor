@@ -1,4 +1,4 @@
-# 🧪 BioProcess Monitor — Enterprise Edition
+# 🧪 BioProcess Monitor
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
@@ -29,7 +29,7 @@ The project is fully containerized. To launch the virtual control room:
 4. Access the dashboard at http://localhost:8501.
 
 ## 🏭 Transition to a Real Bioreactor (Production)
-This architecture was designed to transition from a simulation environment to a real physical production unit (e.g., Sartorius, Applikon, Eppendorf):
+This architecture was designed to transition from a simulation environment to a real physical production unit:
 
 1. Network Connection: Replace the local simulator URL with the IP address of the real tank's PLC in opcua_connector.py: OPC_URL = "opc.tcp://192.168.10.50:4840"
 2. Sensor Mapping (Node IDs): Modify the address dictionary to match the OPC-UA exchange table provided by the manufacturer: NODE_PH = "ns=4;i=10258"
